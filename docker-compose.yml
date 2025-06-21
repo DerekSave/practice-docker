@@ -52,7 +52,7 @@ services:
     container_name: nginx_proxy_manager
     restart: unless-stopped
     ports:
-      - "80:80"
+      - "9080:80"
       - "81:81" # Interfaz web de Nginx Proxy Manager
       - "443:443"
     volumes:
