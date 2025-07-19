@@ -1,21 +1,20 @@
-# Use an official Node.js runtime as the base image
-FROM node:latest
+# Usar la imagen base de Node.js
+FROM node:18-alpine
 
-# Set the working directory in the container
+# Crear directorio de trabajo
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json to the working directory
-# This allows npm install to be cached if dependencies don't change
+# Copiar archivos de dependencias
 COPY package*.json ./
 
-# Install application dependencies
+# Instalar dependencias
 RUN npm install
 
-# Copy the rest of the application code
+# Copiar el código de la aplicación
 COPY . .
 
-# Expose the port the app listens on
+# Exponer el puerto
 EXPOSE 3030
 
-# Define the command to run the application
-CMD [ "node", "server.js" ]
+# Comando para ejecutar la aplicación
+CMD ["npm", "start"]
